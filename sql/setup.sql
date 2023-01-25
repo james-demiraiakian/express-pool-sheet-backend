@@ -4,8 +4,6 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  name TEXT,
-  email TEXT NOT NULL UNIQUE,
-  club_id INT,
-  owner BOOLEAN
+  username TEXT,
+  email TEXT NOT NULL UNIQUE
 );
