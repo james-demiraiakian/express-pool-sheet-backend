@@ -1,6 +1,11 @@
+// const path = require('node:path');
+// const url = require('node:url');
+
 const fs = require('fs').promises;
 
-module.exports = (pool) => {
+module.exports = async (pool) => {
+  // // eslint-disable-next-line no-global-assign
+  // __dirname = path.dirname(url.fileURLToPath(import.meta.url));
   return fs
     .readFile(`${__dirname}/../sql/setup.sql`, { encoding: 'utf-8' })
     .then((sql) => pool.query(sql))
