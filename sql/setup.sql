@@ -13,8 +13,14 @@ CREATE TABLE tournaments (
   date DATE,
   user_id TEXT,
   fencer_count INT,
-  fencer_arr TEXT[]
+  fencer_arr INT[]
 );
+
+INSERT INTO
+  tournaments (date, user_id, fencer_count, fencer_arr)
+VALUES
+  ('2023-04-05', 1, 4, ARRAY [1, 2, 3, 4]),
+  ('2023-01-23', 1, 6, ARRAY [1, 2, 3, 4, 5, 6]);
 
 CREATE TABLE fencers (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -24,8 +30,23 @@ CREATE TABLE fencers (
   touch_score INT,
   touch_receive INT,
   victories INT,
-  user_id text
+  user_id INT,
+  tournament_id INT
 );
+
+INSERT INTO
+  fencers (name, position, indicator, touch_score, touch_receive, victories, user_id, tournament_id)
+VALUES
+  ('Duckey', 1, 0, 0, 0, 0, 1, 1),
+  ('Mina', 1, 0, 0, 0, 0, 1, 1),
+  ('Froderick', 1, 0, 0, 0, 0, 1, 1),
+  ('Oloph', 1, 0, 0, 0, 0, 1, 1),
+  ('Smokey', 1, 0, 0, 0, 0, 1, 2),
+  ('Duckey', 1, 0, 0, 0, 0, 1, 2),
+  ('Mina', 1, 0, 0, 0, 0, 1, 2),
+  ('Froderick', 1, 0, 0, 0, 0, 1, 2),
+  ('Oloph', 1, 0, 0, 0, 0, 1, 2),
+  ('Eyowin', 1, 0, 0, 0, 0, 1, 2);
 
 CREATE TABLE bouts (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -39,3 +60,30 @@ CREATE TABLE bouts (
   v_two boolean,
   tournament_id INT
 );
+
+INSERT INTO
+  bouts (fencer_one_id, fencer_two_id, ts_one, ts_two, tr_one, tr_two, v_one, v_two, tournament_id)
+VALUES
+  (1, 2, 0, 0, 0, 0, false, false, 1),
+  (1, 3, 0, 0, 0, 0, false, false, 1),
+  (1, 4, 0, 0, 0, 0, false, false, 1),
+  (2, 3, 0, 0, 0, 0, false, false, 1),
+  (2, 3, 0, 0, 0, 0, false, false, 1),
+  (3, 4, 0, 0, 0, 0, false, false, 1),
+  (1, 2, 0, 0, 0, 0, false, false, 2),
+  (1, 3, 0, 0, 0, 0, false, false, 2),
+  (1, 4, 0, 0, 0, 0, false, false, 2),
+  (1, 5, 0, 0, 0, 0, false, false, 2),
+  (1, 6, 0, 0, 0, 0, false, false, 2),
+  (2, 3, 0, 0, 0, 0, false, false, 2),
+  (2, 4, 0, 0, 0, 0, false, false, 2),
+  (2, 5, 0, 0, 0, 0, false, false, 2),
+  (2, 6, 0, 0, 0, 0, false, false, 2),
+  (3, 4, 0, 0, 0, 0, false, false, 2),
+  (3, 5, 0, 0, 0, 0, false, false, 2),
+  (3, 6, 0, 0, 0, 0, false, false, 2),
+  (4, 5, 0, 0, 0, 0, false, false, 2),
+  (4, 6, 0, 0, 0, 0, false, false, 2),
+  (5, 6, 0, 0, 0, 0, false, false, 2);
+  
+  
