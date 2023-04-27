@@ -11,16 +11,14 @@ CREATE TABLE users (
 CREATE TABLE tournaments (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   date DATE,
-  user_id TEXT,
-  fencer_count INT,
-  fencer_arr INT[]
+  user_id TEXT
 );
 
 INSERT INTO
-  tournaments (date, user_id, fencer_count, fencer_arr)
+  tournaments (date, user_id)
 VALUES
-  ('2023-04-05', 1, 4, ARRAY [1, 2, 3, 4]),
-  ('2023-01-23', 1, 6, ARRAY [1, 2, 3, 4, 5, 6]);
+  ('2023-04-05', 1),
+  ('2023-01-23', 1);
 
 CREATE TABLE fencers (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
